@@ -40,6 +40,7 @@ class Question(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     stage=models.ForeignKey('app.Stage', related_name = 'questions', on_delete=models.CASCADE)
     question_dependens_on_answer = models.ForeignKey('app.Answer', related_name = 'questions', blank=True,null=True, on_delete=models.CASCADE)
+    question_type = models.CharField(max_length=50, blank=True, null=True)
     class Meta:
         verbose_name = 'Question'
         verbose_name_plural = 'Questions'

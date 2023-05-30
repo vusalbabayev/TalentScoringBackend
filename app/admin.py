@@ -14,9 +14,9 @@ class AnswerTabularInline(admin.TabularInline):
 
 @admin.register(model.Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ('question_title','stage', 'question_dependens_on_answer')
+    list_display = ('question_title','stage', 'question_dependens_on_answer', 'question_type')
     inlines = [AnswerTabularInline]
-    search_fields= ('question_fit',)
+    search_fields= ('question_title',)
     # autocomplete_fields = ['stage']
 # 
     # 
