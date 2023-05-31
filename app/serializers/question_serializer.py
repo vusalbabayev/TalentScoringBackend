@@ -7,7 +7,7 @@ class QuestionListSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = models.Question
-        exclude = ['created_at', 'updated_at', 'stage', 'question_dependens_on_answer']
+        exclude = ['created_at', 'updated_at', 'stage']
 
 
 
