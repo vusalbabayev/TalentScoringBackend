@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.base_user import AbstractBaseUser
-from django.contrib.auth.models import PermissionsMixin, BaseUserManager
+from django.contrib.auth.models import BaseUserManager
 from django.utils.text import slugify
 
 
@@ -18,7 +18,6 @@ class Answer(models.Model):
     answer_dependens_on = models.ForeignKey('self', on_delete=models.PROTECT,
                                              null=True,
                                                blank=True)
-
     stage_fit = models.OneToOneField('app.Stage', on_delete=models.PROTECT, null=True,blank=True)
     
     class Meta:
@@ -73,7 +72,7 @@ class Stage(models.Model):
 class UserManager(BaseUserManager):
     def _create_user(self, username, password, **extra_fields):
         """
-        Create and save a user with the given username, email, and password.
+        Create and save a user with the given username and password.
         """
         user = self.model(username=username, **extra_fields)
         user.set_password(password)
@@ -104,11 +103,6 @@ class UserAccount(AbstractBaseUser):
     is_active=models.BooleanField(default=True)
     is_superuser=models.BooleanField(default=False)
     is_staff=models.BooleanField(default=False)
-    #final_score=models.DecimalField(
-    #    max_digits=9,
-    #    decimal_places=4,
-    #    null=True, blank=True,
-    #    default=0.0)
     user_info = models.JSONField(blank=True, null=True)
     objects = UserManager()
     
