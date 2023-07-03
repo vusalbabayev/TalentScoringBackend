@@ -5,7 +5,7 @@ from django.utils.text import slugify
 
 
 class Answer(models.Model):
-    question_id = models.ForeignKey(
+    questionIdd = models.ForeignKey(
         "app.Question", on_delete=models.PROTECT, related_name='answers')
     answer_title = models.CharField(max_length=100, null=True, blank=True)
     answer_weight = models.DecimalField(max_digits=9,
@@ -31,7 +31,7 @@ class Answer(models.Model):
             return self.stage_fit.slug
         return None
     def __str__(self):
-        return "answer={};  question={}".format(self.answer_title, self.question_id)
+        return "answer={};  question={}".format(self.answer_title, self.questionIdd)
     
 class Question(models.Model):
 
@@ -51,7 +51,7 @@ class Question(models.Model):
 class Stage(models.Model):
     stage_name = models.CharField(max_length = 150)
     parent=models.ForeignKey('self', blank=True, null=True, related_name='stage_children', on_delete=models.CASCADE)
-    slug = models.SlugField(max_length=100,blank=True)
+    slug = models.SlugField(max_length=100, blank=True)
     stage_index = models.IntegerField(blank=True, null=True)
     #stage_dependens_on = models.ForeignKey('app.Answer', on_delete=models.CASCADE, null=True, blank=True)
     def __str__(self):
@@ -62,8 +62,9 @@ class Stage(models.Model):
     
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug=slugify(self.stage_name.replace('ı','i').replace('ə','e').replace('ö','o').replace('ü','u'))
+        if self.stage_name:
+            self.slug=slugify(self.stage_name.replace('ı','i').replace('ə','e').replace('ö','o').replace('ü','u').replace('ç','c')\
+                              .replace("I", "I").replace('Ə','E').replace('Ö','O').replace('Ü','U').replace('Ç','C'))
             
         return super().save(*args, **kwargs)
             
@@ -112,7 +113,6 @@ class UserAccount(AbstractBaseUser):
     objects = UserManager()
     
     USERNAME_FIELD = 'username'
-
     
     class Meta:
         verbose_name = "UserAccount"

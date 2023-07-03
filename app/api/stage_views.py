@@ -3,9 +3,24 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet
 from django.db.models import Prefetch
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
+from django.db import connection
+from django.db import reset_queries
 
-from app.models import Question,  Stage#, Answer
+from app.models import Question,  Stage, Answer
 from app.serializers import StageQuestionListSerializer, StageParentListSerializer, StageChildListSerializer
+
+def database_debug(func):
+    def inner_func(*args, **kwargs):
+        reset_queries()
+        results = func(*args, **kwargs)
+        query_info = connection.queries
+        print('function_name: {}'.format(func.__name__))
+        print('query_count: {}'.format(len(query_info)))
+        queries = ['{}\n'.format(query['sql']) for query in query_info]
+        print('queries: \n{}'.format(''.join(queries)))
+        return results
+    return inner_func
 
 
 class StageQuestionApiView(APIView):
@@ -51,3 +66,4 @@ class StageChildListApiView(APIView):
         serializer = StageParentListSerializer(stage, many = True)
 
         return Response(serializer.data)
+    

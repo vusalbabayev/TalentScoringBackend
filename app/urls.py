@@ -14,6 +14,7 @@ urlpatterns = [
     path("question-lists/<slug:slug>/",stage_views.StageQuestionViewSet.as_view({'get':'list'})),
     path("question-lists/<slug:slug>/<int:pk>/",stage_views.StageQuestionViewSet.as_view({'get':'retrieve'})),
     
-    path('stage-parent-lists/', stage_views.StageParentListApiView.as_view()),
+    path('stage-parent-lists/', stage_views.StageParentListApiView.as_view(), name = "parent-api"),
     path('stage-child-lists/', stage_views.StageChildListApiView.as_view()),
+
 ]

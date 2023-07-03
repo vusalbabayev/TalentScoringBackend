@@ -9,7 +9,7 @@ class AnswerTabularInline(admin.TabularInline):
     model = model.Answer
     fields = ('answer_title', 'answer_weight','answer_dependens_on','stage_fit')
     raw_id_fields = ('answer_dependens_on', 'stage_fit')
-    fk_name = "question_id"
+    fk_name = "questionIdd"
 
 
 @admin.register(model.Question)
@@ -33,7 +33,7 @@ class StageAdmin(admin.ModelAdmin):
 class AnswerAdmin(admin.ModelAdmin):
     search_fields= ('answer_title',)
     autocomplete_fields = ['answer_dependens_on']
-    list_display = ('answer_title', 'question_id', 'answer_weight')
+    list_display = ('answer_title', 'questionIdd', 'answer_weight')
 
     # formfield_overrides = {
     #     models.ForeignKey: {'widget': AutocompleteSelect}
