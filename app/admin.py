@@ -16,7 +16,7 @@ class AnswerTabularInline(admin.TabularInline):
 class QuestionAdmin(admin.ModelAdmin):
     list_display = ('question_title','stage', 'question_dependens_on_answer', 'question_type')
     inlines = [AnswerTabularInline]
-    search_fields= ('question_title',)
+    search_fields= ('question_title','question_dependens_on_question')
     # autocomplete_fields = ['stage']
 # 
     # 
@@ -25,17 +25,15 @@ class QuestionAdmin(admin.ModelAdmin):
         # models.ForeignKey: {'widget': AutocompleteSelect}
     # }
 
-
 @admin.register(model.Stage)
 class StageAdmin(admin.ModelAdmin):
     list_display = ('stage_name', 'parent', 'slug', 'stage_index')
+
+
 @admin.register(model.Answer)
 class AnswerAdmin(admin.ModelAdmin):
     search_fields= ('answer_title',)
     autocomplete_fields = ['answer_dependens_on']
     list_display = ('answer_title', 'questionIdd', 'answer_weight')
 
-    # formfield_overrides = {
-    #     models.ForeignKey: {'widget': AutocompleteSelect}
-    # }
 admin.site.register(model.UserAccount) 
