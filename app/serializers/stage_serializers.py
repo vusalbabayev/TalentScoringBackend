@@ -36,7 +36,6 @@ class StageParentListSerializer(serializers.ModelSerializer):
 
 class StageChildListSerializer(serializers.ModelSerializer):
 
-
     class Meta:
         model = models.Stage
         fields = "__all__"

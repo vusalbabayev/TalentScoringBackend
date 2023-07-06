@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from app.models import Question
 from app.serializers import QuestionListSerializer
 
-class QuestionListApiView(APIView):
+class QuestionListApiView(APIView): 
 
     def get(self, request):
         question = Question.objects.prefetch_related('answers')
