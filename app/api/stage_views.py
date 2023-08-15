@@ -7,7 +7,8 @@ from django.http import HttpResponse
 from django.db import connection
 from django.db import reset_queries
 
-from app.models import Question,  Stage, Answer
+from app.models import Stage
+from userapp.models import Question, Answer
 from app.serializers import StageQuestionListSerializer, StageParentListSerializer, StageChildListSerializer
 
 def database_debug(func):
@@ -28,6 +29,7 @@ class StageQuestionApiView(APIView):
     def get(self, request, slug):
 
         stage = Stage.objects.filter(slug=slug)
+        
         serializer =  StageQuestionListSerializer(stage, many = True)
 
         return Response(serializer.data)
@@ -35,9 +37,10 @@ class StageQuestionApiView(APIView):
 class StageQuestionViewSet(ViewSet):
     queryset = Stage.objects.all()
 
+
     def list(self, request, slug):
-        item = Stage.objects.filter(slug=slug)
-        
+        item = Stage.objects.prefetch_related('questions__answers').filter(slug=slug).order_by('questions__id')
+        item = Stage.objects.prefetch_related('questions__answers').filter(slug=slug)
         serializer = StageQuestionListSerializer(item, many = True)
 
         return Response(serializer.data)

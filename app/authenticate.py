@@ -14,7 +14,6 @@ class CustomAuthentication(jwt_authentication.JWTAuthentication):
     def authenticate(self, request):
         header = self.get_header(request)
         raw_token = request.COOKIES.get(settings.SIMPLE_JWT['AUTH_COOKIE']) or None 
-
         if header is None:
             return None
         else:
@@ -22,6 +21,7 @@ class CustomAuthentication(jwt_authentication.JWTAuthentication):
 
         if raw_token is None:
             return None
+        
         
         validated_token = self.get_validated_token(raw_token)
         enforce_csrf(request)

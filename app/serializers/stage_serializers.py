@@ -1,6 +1,6 @@
 from app import models
 from rest_framework import serializers, generics
-from app.serializers.question_serializer import QuestionListSerializer
+from userapp.serializers.question_serializer import QuestionListSerializer
 from rest_framework import permissions
 
 class RecursiveSerializer(serializers.Serializer):
@@ -13,15 +13,12 @@ class RecursiveSerializer(serializers.Serializer):
     
 class StageQuestionListSerializer(serializers.ModelSerializer):
     questions = QuestionListSerializer(many=True, read_only=True) 
-    stage_children=RecursiveSerializer(many=True, read_only=True)
     
     permission_classes = [""]
 
     class Meta:
         model = models.Stage
-        fields = "__all__"
-
-
+        exclude = ["parent"]
 
 class StageParentListSerializer(serializers.ModelSerializer):
     child_count = serializers.SerializerMethodField()
@@ -33,9 +30,20 @@ class StageParentListSerializer(serializers.ModelSerializer):
     def get_child_count(self,obj):
         return obj.stage_children.count()
 
-
 class StageChildListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Stage
         fields = "__all__"
+
+
+
+# class StageQuestionListSerializer(serializers.ModelSerializer):
+#     questions = QuestionListSerializer(many=True, read_only=True) 
+#     stage_children=RecursiveSerializer(many=True, read_only=True)
+    
+#     permission_classes = [""]
+
+#     class Meta:
+#         model = models.Stage
+#         exclude = ["parent"]

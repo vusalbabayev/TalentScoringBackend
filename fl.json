@@ -1,28 +1,253 @@
 [
-    {
-      "id": 1,
-      "question": "dsdsdssd?",
-      "answers": {
-        "0": [
-          {
-            "id": 1,
-            "answer": "tehsil alitem"
-          },
-          {
-            "id": 2,
-            "answer": "sen necesen?"
+  {
+    "name": "umumi-suallar",
+    "formData": {
+      "firstName": "Tamerlan",
+      "lastName": "Aliyev",
+      "workExp": "1",
+      "curOccupation": {
+        "id": 6,
+        "answer": "Təhsil alıram və çalışıram",
+        "answer_weight": 0.5
+      },
+      "education": 
+        
+        {
+          "master": {
+            "answer": "Magistr",
+            "answer_weight": 0.07
           }
-        ],
-        "1": [
-          {
-            "id": 1,
-            "answer": "what are?"
-          },
-          {
-            "id": 2,
-            "answer": "so you?"
-          }
-        ]
+        },
+
+    
+      "educationGrant": {
+        "id": 15,
+        "answer": "Zərbəçi",
+        "answer_weight": 0.3
       }
     }
-  ]
+  },
+  {
+    "name": "orta-texniki-ve-ali-tehsil-suallari",
+    "formData": {
+      "EducationScore": [
+        {
+          "bachelor": {
+            "id": 1,
+            "country": "Russian",
+            "universty_name": "Moskva dovlet Unisi",
+            "specialty": "ITIF",
+            "uni_start": "date",
+            "uni_end": "date",
+            "criterion": {
+              "criterion_type": "her ikisi",
+              "lokal_test": {
+                "lokal_test_name": "asdasd",
+                "score": 500,
+                "max_score": 700,
+                "answer_weight": 0.5
+              },
+              "muraciyyet": [
+                {
+                  "muraciyyet_type": "Atestat",
+                  "score": 20,
+                  "answer_weight": 0.03
+                },
+                {
+                  "muraciyyet_type": "language",
+                  "language_type": [
+                    {
+                      "language_name": "IELTS",
+                      "language_score": 6.5,
+                      "answer_weight": 0.4
+                    },
+                    {
+                      "language_name": "TOFEL",
+                      "language_score": 6.5,
+                      "answer_weight": 0.4
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "bachelor": {
+            "id": 1,
+            "country": "Azerbaijan",
+            "universty_name": "ADNSU",
+            "specialty": "ITIF",
+            "uni_start": "date",
+            "uni_end": "date",
+            "criterion": {
+              "criterion_type": "her ikisi",
+              "lokal_test": {
+                "lokal_test_name": "asdasd",
+                "score": 300,
+                "max_score": 700,
+                "answer_weight": 0.03
+              },
+              "muraciyyet": [
+                {
+                  "muraciyyet_type": "Atestat",
+                  "score": 50,
+                  "answer_weight": 0.3
+                },
+                {
+                  "muraciyyet_type": "language",
+                  "language_type": [
+                    {
+                      "language_name": "IELTS",
+                      "language_score": 6.5,
+                      "answer_weight": 0.4
+                    },
+                    {
+                      "language_name": "TOFEL",
+                      "language_score": 6.5,
+                      "answer_weight": 0.4
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "master": {}
+        },
+        {
+          "phd": {}
+        }
+      ]
+    }
+  },
+  {
+    "name": "olimpiada-suallar",
+    "formData": {
+      "wonOlympics": "1",
+      "subjectOlympiad": {
+        "id": 0,
+        "answer": ""
+      },
+      "highestOlympiad": {
+        "id": 0,
+        "answer": "Respublika",
+        "answer_weight": 0.001
+      },
+      "rankOlympiad": {
+        "id": 0,
+        "answer": "2-ci yer",
+        "answer_weight": 0.2
+      }
+    }
+  },
+  {
+    "name": "is-tecrubesi-substage",
+    "formData": {
+      "experiences": [
+        {
+          "haveExperience": "0",
+          "company": "as",
+          "profession": "asd",
+          "workingActivityForm": {
+            "id": 225,
+            "answer": "Fiziki əmək",
+            "answer_weight": 0.8
+          },
+          "degreeOfProfes": {
+            "id": 231,
+            "answer": "Mütəxəssis",
+            "answer_weight": 0.5
+          },
+          "startDate": "2022-07-19",
+          "endDate": "2023-07-14",
+          "currentWorking": false
+        },
+        {
+          "company": "asda",
+          "profession": "saxc",
+          "workingActivityForm": {
+            "id": 226,
+            "answer": "Sənət",
+            "answer_weight": 0.5
+          },
+          "degreeOfProfes": {
+            "id": 231,
+            "answer": "Mütəxəssis",
+            "answer_weight": 0.5
+          },
+          "startDate": "2021-06-29",
+          "endDate": "",
+          "currentWorking": true
+        }
+      ]
+    }
+  },
+  {
+    "name": "xususi-bacariqlar-substage",
+    "formData": {
+      "haveSpecialSkills": "0",
+      "specialSkills": [
+        {
+          "talent": "Musiqi",
+          "talent_level": "heveskar",
+          "answer_weight": 0.3
+        },
+        {
+          "talent": "Musiqi",
+          "talent_level": "pesekar",
+          "answer_weight": 0.05
+        },
+        {
+          "talent": "Musiqi",
+          "talent_level": "heveskar",
+          "answer_weight": 0.3
+        }
+      ],
+      "levelSkill": "",
+      "certSkill": "",
+      "Musiqi": "0",
+      "Rəqs": "1"
+    }
+  },
+  {
+    "name": "dil-bilikleri-substage",
+    "formData": {
+      "languageSkills": [
+        {
+          "language": {
+            "id": 244,
+            "answer": "Rus dili"
+          },
+          "langCert": "0",
+          "langCertName": "wergrjfbrejk",
+          "langCertResult": "200",
+          "langLevel": "C1 (Üst orta)",
+          "answer_weight": 0.03
+        },
+        {
+          "language": {
+            "id": 243,
+            "answer": "Ingilis dili"
+          },
+          "engLangCert": "0",
+          "ieltsResult": {
+            "id": 289,
+            "answer": "8.0-9.0"
+          },
+          "answer_weight": 0.03
+        },
+        {
+          "language": {
+            "id": 246,
+            "answer": "Ispan dili"
+          },
+          "langCert": "1",
+          "langLevel": "C2 (İrəli)",
+          "answer_weight": 0.001
+        }
+      ]
+    }
+  }
+]
